@@ -11,7 +11,19 @@ var indexRouter = require('./routes/index');
 var chatRouter = require('./routes/chat');
 
 var app = express();
-app.use(cors())
+
+var whitelist = ['https://dev.dailylearn.in']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
