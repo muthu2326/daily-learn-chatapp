@@ -12,6 +12,17 @@ var chatRouter = require('./routes/chat');
 
 var app = express();
 
+var whitelist = ['https://dev.dailylearn.in', 'https://daily-learn-chatapp.herokuapp.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   next();
