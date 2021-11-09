@@ -24,7 +24,7 @@ var io = require('socket.io')(server, {
   cors: {
       origin: "*",
       methods: ["GET", "POST"],
-      credentials: false
+      credentials: true
   }
 });
 
