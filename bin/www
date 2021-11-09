@@ -24,7 +24,8 @@ var io = require('socket.io')(server, {
   cors: {
       origin: "https://dev.dailylearn.in",
       methods: ["GET", "POST"],
-      credentials: true
+      credentials: true,
+      allowEIO3: true
   }
 });
 
