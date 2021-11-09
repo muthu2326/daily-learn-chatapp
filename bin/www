@@ -22,7 +22,7 @@ app.set('port', port);
 var server = http.createServer(app);
 var io = require('socket.io')(server, {
   cors: {
-      origin: "https://dev.dailylearn.in",
+      origin: ["https://dev.dailylearn.in", "https://daily-learn-chatapp.herokuapp.com"],
       methods: ["GET", "POST"],
       credentials: true
   }
