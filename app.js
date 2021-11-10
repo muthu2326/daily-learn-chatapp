@@ -3,33 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var cors = require('cors')
-
-
 
 var indexRouter = require('./routes/index');
 var chatRouter = require('./routes/chat');
 
 var app = express();
-
-var whitelist = ['https://dev.dailylearn.in', 'https://daily-learn-chatapp.herokuapp.com']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   next();
-// })
-
-
-// app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/chat', chatRouter);
+// app.use('/chat', chatRouter); // Disabled the route ** NOT IN USE
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
