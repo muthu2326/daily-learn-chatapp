@@ -104,19 +104,17 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <!-- <script src="socket.io.js"></script> --> 
-    <script src="socket.io-file-client.js"></script> // Add this script and it is served by the Node JS serve
+    <script src="socket.io-file-client.js"></script>
 
     <script>
       var socket;
 
       window.onload = function () {
         
+        // socket = io.connect("http://localhost:3000"); // Local Server
+        socket = io.connect('https://daily-learn-chatapp.herokuapp.com'); // Remote Server
 
-        var uploader = new SocketIOFileClient(socket); // Socket File Upload @Vivek
-
-        // socket = io.connect("http://localhost:3000"); // Connecting to local server
-        socket = io.connect('https://daily-learn-chatapp.herokuapp.com'); // Connecting to remote Node JS server
-
+        var uploader = new SocketIOFileClient(socket);
         socket.on("codeboard-message-broadcasted", function (message) {
           var html =
             '<div class="message-box others-message-box">' +
