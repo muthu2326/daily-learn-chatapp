@@ -110,9 +110,9 @@
       var socket;
 
       window.onload = function () {
-        socket = io.connect("http://localhost:3000");
+        // socket = io.connect("http://localhost:3000");
         var uploader = new SocketIOFileClient(socket);
-        // socket = io.connect('https://daily-learn-chatapp.herokuapp.com');
+        socket = io.connect('https://daily-learn-chatapp.herokuapp.com');
 
         socket.on("codeboard-message-broadcasted", function (message) {
           var html =
